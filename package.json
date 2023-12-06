@@ -1,0 +1,122 @@
+{
+  "name": "electricityusers",
+  "version": "1.0.0",
+  "description": "Theory and practical - Electricity Users cross-platform desktop application",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "pack": "electron-builder --dir",
+    "lint": "echo \"No linting configured\"",
+    "dist": "electron-builder -mwl",
+    "postinstall": "electron-builder install-app-deps",
+    "build-icon": "electron-icon-builder --input=./src/img/icon.png --output=build --flatten"
+  },
+  "keywords": [],
+  "author": "Awa & Ruby",
+  "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "icon": "build/icons",
+      "asar": true,
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "electricity-users"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
+  },
+  "build": {
+    "appId": "electricity.users",
+    "productName": "Electricity Users",
+    "copyright": "Copyright © 2022 Awa&Ruby",
+    "asar": true,
+    "directories": {
+      "buildResources": "build/icons"
+    },
+    "extraResources": [
+      {
+        "from": "icons/",
+        "to": "icons/"
+      }
+    ],
+    "dmg": {
+      "icon": "build/icons/icon.icns",
+      "contents": [
+        {
+          "x": 110,
+          "y": 150
+        },
+        {
+          "x": 240,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    },
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icons/icon.icns",
+      "category": "public.app-category.utilities"
+    },
+    "linux": {
+      "icon": "build/icons",
+      "category": "Utility",
+      "target": [
+        "AppImage",
+        "deb"
+      ]
+    },
+    "win": {
+      "target": "nsis",
+      "icon": "build/icons/icon.ico"
+    },
+    "nsis": {
+      "installerIcon": "build/icons/icon.ico",
+      "installerHeader": "build/icons/icon.ico",
+      "installerHeaderIcon": "build/icons/icon.ico",
+      "installerSidebar": "build/icons/icon.ico",
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "allowElevation": true,
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true
+    }
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.63",
+    "@electron-forge/maker-deb": "^6.0.0-beta.63",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.63",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.63",
+    "@electron-forge/maker-zip": "^6.0.0-beta.63",
+    "electron": "18.2.0",
+    "electron-builder": "^23.0.3",
+    "electron-forge": "^5.2.4",
+    "electron-icon-builder": "^2.0.1"
+  }
+}

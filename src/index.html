@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Electricity Users Desktop Application - 2020044, 2020443</title>
+  <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+  <main>
+     <!-- Application title -->
+    <h1 id="app-title">Electricity Users Desktop Application</h1>
+
+     <!-- Form -->
+    <div id="form-holder">
+      <div id="main-box">
+        <form id="BillForm" enctype="multipart/form-data">
+
+          <div class="form-item">
+            <label>Number of Units</label>
+            <input id="numofunits" name="units" type="text" class="input-item text-right" required>
+          </div>
+
+          <div class="form-item">
+            <label>Billing Period(Days)</label>
+            <input id="numofdays" name="days" type="text" class="input-item text-right" required>
+          </div>
+
+          <div class="form-item">
+            <label>Amount of bill without VAT</label>
+            <input name="Vatno" type="text" required value="13.5%" class="input-item text-right" required>
+          </div>
+
+          <div class="form-item">
+            <label>Standing Chargest</label>
+            <input name="Sc" type="text" required value="4 cents per day" class="input-item text-right" required>
+          </div>
+
+          <div class="form-item">
+            <label>Unit Rate</label>
+            <input name="PricePerUnit" required type="text" value="20 cents per unit" class="input-item text-right"
+              required>
+          </div>
+
+          <div class="form-item">
+            <button type="submit" id="calculate-btn" class="btn-block">Calculate</button>
+            <button type="reset" id="reset-btn" class="btn-block">Reset</button>
+          </div>
+        </form>
+
+        <!-- Result -->
+        <table id="result">         
+          <colgroup>
+            <col width="40%" span="1" style="background-color: #dddddd;">
+            <col width="60%">
+          </colgroup>
+          <caption>Result</caption>
+          <tbody>
+            <tr>
+              <td>Number of Units</td>
+              <td class="text-right" id="NOfUnits"></td>
+            </tr>
+            <tr>
+              <td>Number of Days</td>
+              <td class="text-right" id="BillPerid"></td>
+            </tr>
+            <tr>
+              <td>Bill without VAT</td>
+              <td class="text-right" id="WithoutVAT"></td>
+            </tr>
+            <tr>
+              <td>Bill with VAT</td>
+              <td class="text-right" id="IncludingVAT"></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </div>
+    <script src="./bill.js"></script>
+  </main>
+</body>
+
+</html>
